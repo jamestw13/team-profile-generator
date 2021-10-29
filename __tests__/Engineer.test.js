@@ -24,12 +24,12 @@ test("gets engineer's email address", () => {
 	expect(engineer.getEmail()).toEqual('jim@gmail.com');
 });
 
-test("gets engineer's office number", () => {
+test("gets engineer's github profile", () => {
 	const engineer = new Engineer('Jim', 1, 'jim@gmail.com', 'devjim');
 	expect(engineer.getGithub()).toEqual('devjim');
 });
 
 test("gets engineer's role", () => {
-	const engineer = new Engineer('Jim', 1, 'jim@gmail.com');
+	const engineer = new Engineer('Jim', 1, 'jim@gmail.com', 'devjim');
 	expect(engineer.getRole()).toEqual('Engineer');
 });
