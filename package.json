@@ -1,23 +1,23 @@
 {
-  "name": "team-profile-generator",
-  "version": "1.0.0",
-  "description": "Generates a webpage that displays team information built from a CLI",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jamestw13/team-profile-generator.git"
-  },
-  "author": "TJ James",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jamestw13/team-profile-generator/issues"
-  },
-  "homepage": "https://github.com/jamestw13/team-profile-generator#readme",
-  "dependencies": {
-    "inquirer": "^8.2.0",
-    "jest": "^27.3.1"
-  }
+	"name": "team-profile-generator",
+	"version": "1.0.0",
+	"description": "Generates a webpage that displays team information built from a CLI",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest --verbose"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jamestw13/team-profile-generator.git"
+	},
+	"author": "TJ James",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/jamestw13/team-profile-generator/issues"
+	},
+	"homepage": "https://github.com/jamestw13/team-profile-generator#readme",
+	"dependencies": {
+		"inquirer": "^8.2.0",
+		"jest": "^27.3.1"
+	}
 }
