@@ -1,3 +1,99 @@
+const generateManager = employees => {
+	const managers = employees.filter(employee => {
+		employee.getRole() === 'Manager';
+	});
+
+	if (managers) {
+		return `
+    <div class="d-flex justify-content-around bg-secondary mb-2 rounded-3 p-3">
+
+    ${managers
+			.map(({name, id, email, officeNumber}) => {
+				return `
+      <!-- Manager Card -->
+      <div class="card" style="width: 18rem">
+        <div class="card-header">
+          <h5 class="card-title">${name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+        </div>
+        <div class="card-body">
+          <p class="card-text">ID Number: ${id}</p>
+          <p class="card-text">Office Number: ${officeNumber}</p>
+          <a href="mailto:${email}" class="card-link">${email}</a>
+        </div>
+        </div>
+        `;
+			})
+			.join('')}
+      </div>
+      `;
+	}
+};
+
+const generateEngineers = employees => {
+	const engineers = employees.filter(employee => {
+		employee.getRole() === 'Engineer';
+	});
+
+	if (engineers) {
+		return `
+    <div class="d-flex justify-content-around bg-secondary mb-2 rounded-3 p-3">
+
+    ${engineers
+			.map(({name, id, email, github}) => {
+				return `
+      <!-- Manager Card -->
+      <div class="card" style="width: 18rem">
+        <div class="card-header">
+          <h5 class="card-title">${name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+        </div>
+        <div class="card-body">
+          <p class="card-text">ID Number: ${id}</p>
+          <a href=":github.com/${github}" class="card-link">Engineer's github</a>
+          <a href="mailto:${email}" class="card-link">${email}</a>
+        </div>
+        </div>
+        `;
+			})
+			.join('')}
+      </div>
+      `;
+	}
+};
+
+const generateInterns = employees => {
+	const interns = employees.filter(employee => {
+		employee.getRole() === 'Intern';
+	});
+
+	if (interns) {
+		return `
+    <div class="d-flex justify-content-around bg-secondary mb-2 rounded-3 p-3">
+
+    ${interns
+			.map(({name, id, email, school}) => {
+				return `
+      <!-- Manager Card -->
+      <div class="card" style="width: 18rem">
+        <div class="card-header">
+          <h5 class="card-title">${name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+        </div>
+        <div class="card-body">
+          <p class="card-text">ID Number: ${id}</p>
+          <p class="card-text">School: ${school}</p>
+          <a href="mailto:${email}" class="card-link">${email}</a>
+        </div>
+        </div>
+        `;
+			})
+			.join('')}
+      </div>
+      `;
+	}
+};
+
 module.exports = data => {
 	const employees = data.employees;
 
@@ -27,54 +123,14 @@ module.exports = data => {
 
 		<!-- Manager Section -->
     ${generateManager(employees)}
-		<div class="d-flex justify-content-around bg-secondary mb-2 rounded-3 p-3">
-			<!-- Manager Card -->
-			<div class="card" style="width: 18rem">
-				<div class="card-header">
-					<h5 class="card-title">Manager Name</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Manager</h6>
-				</div>
-				<div class="card-body">
-					<p class="card-text">ID Number</p>
-					<p class="card-text">Office Number</p>
-					<a href="#" class="card-link">Email Address</a>
-				</div>
-			</div>
-		</div>
+
 
 		<!-- Engineer Section -->
     ${generateEngineers(employees)}
-		<div class="d-flex justify-content-around flex-wrap bg-secondary mb-2 rounded-3 p-3">
-			<!-- Engineer Card -->
-			<div class="card m-2" style="width: 18rem">
-				<div class="card-header">
-					<h5 class="card-title">Engineer Name</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
-				</div>
-				<div class="card-body">
-					<p class="card-text">ID Number</p>
-					<p class="card-text">Github:</p>
-					<a href="#" class="card-link">Email Address</a>
-				</div>
-			</div>
-		</div>
+
 
 		<!-- Intern Section -->
     ${generateInterns(employees)}
-		<div class="d-flex justify-content-around flex-wrap bg-secondary mb-2 rounded-3 p-3">
-			<!-- Intern Card -->
-			<div class="card m-2" style="width: 18rem">
-				<div class="card-header">
-					<h5 class="card-title">Intern Name</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Intern</h6>
-				</div>
-				<div class="card-body">
-					<p class="card-text">ID Number</p>
-					<p class="card-text">School:</p>
-					<a href="#" class="card-link">Email Address</a>
-				</div>
-			</div>
-		</div>
 
 		<script
 			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"

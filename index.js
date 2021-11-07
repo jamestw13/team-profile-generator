@@ -129,7 +129,6 @@ const promptEmployees = data => {
 
 promptManager()
 	.then(promptEmployees)
-
 	.then(teamData => {
 		generatePage(teamData);
 	});
