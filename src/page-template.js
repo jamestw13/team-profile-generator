@@ -1,17 +1,15 @@
 const generateManager = employees => {
-	const managers = employees.filter(employee => {
-		employee.getRole() === 'Manager';
-	});
+	const managers = employees.filter(employee => employee.getRole() === 'Manager');
 
-	if (managers) {
+	if (managers.length) {
 		return `
-    <div class="d-flex justify-content-around bg-secondary mb-2 rounded-3 p-3">
+    <div class="d-flex flex-wrap justify-content-around bg-secondary mb-2 rounded-3 p-3 shadow">
 
     ${managers
 			.map(({name, id, email, officeNumber}) => {
 				return `
       <!-- Manager Card -->
-      <div class="card" style="width: 18rem">
+      <div class="card m-1 shadow" style="width: 18rem">
         <div class="card-header">
           <h5 class="card-title">${name}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
@@ -27,30 +25,32 @@ const generateManager = employees => {
 			.join('')}
       </div>
       `;
+	} else {
+		return `<div class="d-flex flex-wrap justify-content-around bg-light mb-2 rounded-3 p-3 shadow"><p>No Managers Listed</p></div>`;
 	}
 };
 
 const generateEngineers = employees => {
-	const engineers = employees.filter(employee => {
-		employee.getRole() === 'Engineer';
-	});
+	const engineers = employees.filter(employee => employee.getRole() === 'Engineer');
 
-	if (engineers) {
+	if (engineers.length) {
 		return `
-    <div class="d-flex justify-content-around bg-secondary mb-2 rounded-3 p-3">
+    <div class="d-flex flex-wrap justify-content-around bg-secondary mb-2 rounded-3 p-3 shadow">
 
     ${engineers
 			.map(({name, id, email, github}) => {
 				return `
-      <!-- Manager Card -->
-      <div class="card" style="width: 18rem">
+      <!-- Engineer Card -->
+      <div class="card m-1 shadow" style="width: 18rem">
         <div class="card-header">
           <h5 class="card-title">${name}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
         </div>
         <div class="card-body">
           <p class="card-text">ID Number: ${id}</p>
-          <a href=":github.com/${github}" class="card-link">Engineer's github</a>
+          <p class="card-text">Engineer's Github: 
+          <a href="https://github.com/${github}" class="card-link">${github}</a>
+          </p>
           <a href="mailto:${email}" class="card-link">${email}</a>
         </div>
         </div>
@@ -59,26 +59,26 @@ const generateEngineers = employees => {
 			.join('')}
       </div>
       `;
+	} else {
+		return `<div class="d-flex flex-wrap justify-content-around bg-light mb-2 rounded-3 p-3 shadow"><p>No Engineers Listed</p></div>`;
 	}
 };
 
 const generateInterns = employees => {
-	const interns = employees.filter(employee => {
-		employee.getRole() === 'Intern';
-	});
+	const interns = employees.filter(employee => employee.getRole() == 'Intern');
 
-	if (interns) {
+	if (interns.length) {
 		return `
-    <div class="d-flex justify-content-around bg-secondary mb-2 rounded-3 p-3">
+    <div class="d-flex flex-wrap justify-content-around bg-secondary mb-2 rounded-3 p-3 shadow">
 
     ${interns
 			.map(({name, id, email, school}) => {
 				return `
-      <!-- Manager Card -->
-      <div class="card" style="width: 18rem">
+      <!-- Intern Card -->
+      <div class="card m-1 shadow" style="width: 18rem">
         <div class="card-header">
           <h5 class="card-title">${name}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Intern</h6>
         </div>
         <div class="card-body">
           <p class="card-text">ID Number: ${id}</p>
@@ -91,15 +91,16 @@ const generateInterns = employees => {
 			.join('')}
       </div>
       `;
+	} else {
+		return `<div class="d-flex flex-wrap justify-content-around bg-light mb-2 rounded-3 p-3 shadow"><p>No Interns Listed</p></div>`;
 	}
 };
 
 module.exports = data => {
-	console.log(data);
 	const employees = data.employees;
 
 	return `
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />

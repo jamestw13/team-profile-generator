@@ -105,8 +105,9 @@ const promptEmployees = data => {
 
 	if (data.nextEmployee === 'Engineer') {
 		return inquirer.prompt(engineerQuestions).then(employeeData => {
-			const {name, id, email, github} = employeeData;
+			const {name, id, email, github, nextEmployee} = employeeData;
 			const engineer = new Engineer(name, id, email, github);
+			data.nextEmployee = nextEmployee;
 			data.employees.push(engineer);
 			if (employeeData.nextEmployee !== 'No other employees') {
 				return promptEmployees(data);
@@ -116,9 +117,10 @@ const promptEmployees = data => {
 		});
 	} else if (data.nextEmployee === 'Intern') {
 		return inquirer.prompt(internQuestions).then(employeeData => {
-			const {name, id, email, school} = employeeData;
+			const {name, id, email, school, nextEmployee} = employeeData;
 			const intern = new Intern(name, id, email, school);
 			data.employees.push(intern);
+			data.nextEmployee = nextEmployee;
 			if (employeeData.nextEmployee !== 'No other employees') {
 				return promptEmployees(data);
 			} else {
@@ -136,5 +138,11 @@ promptManager()
 		return generatePage(teamData);
 	})
 	.then(pageHTML => {
-		console.log(pageHTML);
+		return writeFile(pageHTML);
+	})
+	.then(writeFileResponse => {
+		console.log(writeFileResponse.message);
+	})
+	.catch(err => {
+		console.log(err);
 	});

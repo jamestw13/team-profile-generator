@@ -11,7 +11,7 @@ const writeFile = fileContent => {
 			// if successful, resolve and send the success message
 			resolve({
 				ok: true,
-				message: 'file created',
+				message: 'HTML file created!',
 			});
 		});
 	});
