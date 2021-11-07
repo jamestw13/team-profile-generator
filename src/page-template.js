@@ -95,6 +95,7 @@ const generateInterns = employees => {
 };
 
 module.exports = data => {
+	console.log(data);
 	const employees = data.employees;
 
 	return `

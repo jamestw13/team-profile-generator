@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template.js');
+const writeFile = require('./utils/generate-site.js');
 
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
@@ -124,11 +125,16 @@ const promptEmployees = data => {
 				return data;
 			}
 		});
+	} else {
+		return data;
 	}
 };
 
 promptManager()
 	.then(promptEmployees)
 	.then(teamData => {
-		generatePage(teamData);
+		return generatePage(teamData);
+	})
+	.then(pageHTML => {
+		console.log(pageHTML);
 	});
