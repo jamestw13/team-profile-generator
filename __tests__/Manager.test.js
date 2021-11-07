@@ -1,3 +1,5 @@
+// JEST TEST FOR MANAGER OBJECT
+
 const Manager = require('../lib/Manager.js');
 
 test('creates a manager object', () => {

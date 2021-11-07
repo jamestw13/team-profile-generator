@@ -1,3 +1,5 @@
+// JEST TEST FOR ENGINEER OBJECT
+
 const Engineer = require('../lib/Engineer.js');
 
 test('creates a engineer object', () => {

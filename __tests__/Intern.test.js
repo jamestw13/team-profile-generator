@@ -1,3 +1,5 @@
+// JEST TEST FOR INTERN OBJECT
+
 const Intern = require('../lib/Intern.js');
 
 test('creates a intern object', () => {

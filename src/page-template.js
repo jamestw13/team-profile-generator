@@ -1,12 +1,15 @@
+// MANAGER SECTION //
 const generateManager = employees => {
 	const managers = employees.filter(employee => employee.getRole() === 'Manager');
-
+	// If there are managers
 	if (managers.length) {
+		// Create manager container
 		return `
     <div class="d-flex flex-wrap justify-content-around bg-secondary mb-2 rounded-3 p-3 shadow">
 
     ${managers
 			.map(({name, id, email, officeNumber}) => {
+				// For each manager, create a card
 				return `
       <!-- Manager Card -->
       <div class="card m-1 shadow" style="width: 18rem">
@@ -22,23 +25,28 @@ const generateManager = employees => {
         </div>
         `;
 			})
+			// Add card to container
 			.join('')}
       </div>
       `;
 	} else {
+		// If no managers, return empty container
 		return `<div class="d-flex flex-wrap justify-content-around bg-light mb-2 rounded-3 p-3 shadow"><p>No Managers Listed</p></div>`;
 	}
 };
 
+// ENGINEER SECTION //
 const generateEngineers = employees => {
 	const engineers = employees.filter(employee => employee.getRole() === 'Engineer');
-
+	// If there are engineers:
 	if (engineers.length) {
+		// Create engineer container
 		return `
     <div class="d-flex flex-wrap justify-content-around bg-secondary mb-2 rounded-3 p-3 shadow">
 
     ${engineers
 			.map(({name, id, email, github}) => {
+				// For each engineer, create a card
 				return `
       <!-- Engineer Card -->
       <div class="card m-1 shadow" style="width: 18rem">
@@ -56,23 +64,28 @@ const generateEngineers = employees => {
         </div>
         `;
 			})
+			// Add card to container
 			.join('')}
       </div>
       `;
 	} else {
+		// If no engineers, return empty container
 		return `<div class="d-flex flex-wrap justify-content-around bg-light mb-2 rounded-3 p-3 shadow"><p>No Engineers Listed</p></div>`;
 	}
 };
 
+// INTERN SECTION //
 const generateInterns = employees => {
 	const interns = employees.filter(employee => employee.getRole() == 'Intern');
-
+	// If there are interns
 	if (interns.length) {
+		// Create intern container
 		return `
     <div class="d-flex flex-wrap justify-content-around bg-secondary mb-2 rounded-3 p-3 shadow">
 
     ${interns
 			.map(({name, id, email, school}) => {
+				// For each intern, create a card
 				return `
       <!-- Intern Card -->
       <div class="card m-1 shadow" style="width: 18rem">
@@ -88,63 +101,69 @@ const generateInterns = employees => {
         </div>
         `;
 			})
+			// Add card to container
 			.join('')}
       </div>
       `;
 	} else {
+		// If no interns return empty container
 		return `<div class="d-flex flex-wrap justify-content-around bg-light mb-2 rounded-3 p-3 shadow"><p>No Interns Listed</p></div>`;
 	}
 };
 
-module.exports = data => {
+// Main function for filling in template
+const generatePage = data => {
 	const employees = data.employees;
 
 	return `
-<!DOCTYPE html>
-<html lang="en">
+	<!DOCTYPE html>
+	<html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-		<title>Team Profile</title>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-			crossorigin="anonymous"
-		/>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title>Team Profile</title>
+	<link
+	rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous"
+	/>
 	</head>
 	<body class="container py-4">
-		<header class="p-5 mb-2 bg-primary rounded-3">
-			<div class="container-fluid">
-				<h1 class="display-5 fw-bold">My Team</h1>
-				<p class="col-md-8 fs-4">You can view your team members and their details below</p>
-			</div>
-		</header>
-
-		<!-- Manager Section -->
-    ${generateManager(employees)}
-
-
-		<!-- Engineer Section -->
-    ${generateEngineers(employees)}
-
-
-		<!-- Intern Section -->
-    ${generateInterns(employees)}
-
-		<script
-			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-			integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-			integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-			crossorigin="anonymous"
-		></script>
+	<header class="p-5 mb-2 bg-primary rounded-3">
+	<div class="container-fluid">
+	<h1 class="display-5 fw-bold">My Team</h1>
+	<p class="col-md-8 fs-4">You can view your team members and their details below</p>
+	</div>
+	</header>
+	
+	<!-- Manager Section -->
+	${generateManager(employees)}
+	
+	
+	<!-- Engineer Section -->
+	${generateEngineers(employees)}
+	
+	
+	<!-- Intern Section -->
+	${generateInterns(employees)}
+	
+	<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+	crossorigin="anonymous"
+	></script>
+	<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+	crossorigin="anonymous"
+	></script>
 	</body>
-</html>
-`;
+	</html>
+	`;
 };
+
+// Export generatePage function
+module.exports = generatePage;
